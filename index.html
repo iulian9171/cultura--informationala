@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultura Informațională, Tehnologia și Arta Animației</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --bg-color: #0b0f19;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 6rem 2rem 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            opacity: 0.12;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #a5b4fc, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin: 3.5rem 0;
+        }
+
+        .grid-section.reverse {
+            direction: rtl;
+        }
+
+        .grid-section.reverse > * {
+            direction: ltr;
+        }
+
+        section, .content-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        section:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--card-border);
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        p {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            top: 2px;
+        }
+
+        li strong {
+            color: #ffffff;
+        }
+
+        /* Secțiunea dedicată instrumentelor de studiu interactive */
+        .study-tools-wrapper {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            padding: 3rem 2.5rem;
+            margin: 4rem 0;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        .study-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .study-header h2 {
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #ffffff;
+        }
+
+        .study-header p {
+            color: var(--text-muted);
+        }
+
+        .quiz-box {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 14px;
+            margin-bottom: 2rem;
+        }
+
+        .question-tracker {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .question {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option-label {
+            display: block;
+            background-color: rgba(30, 41, 59, 0.9);
+            padding: 14px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.25s ease;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        .option-label:hover {
+            background-color: rgba(99, 102, 241, 0.15);
+            border-color: var(--primary-light);
+            transform: translateX(4px);
+        }
+
+        .option-label input {
+            margin-right: 12px;
+            accent-color: var(--primary);
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        #quiz-result {
+            margin-top: 1.2rem;
+            font-weight: 600;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        .flashcards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .flashcard {
+            background-color: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .flashcard:hover {
+            border-color: var(--accent);
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+
+        .flashcard h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+            background: rgba(11, 15, 25, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .grid-section, .grid-section.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Cultura Informațională, Tehnologia și Arta Animației</h1>
+            <p>Explorează intersecția dintre gândirea critică, uneltele digitale de ultimă generație și excelența în animație printr-un design modern și instrumente interactive de studiu.</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Componenta 1 -->
+        <div class="grid-section">
+            <section>
+                <h2><span>01.</span> Ce este cultura informațională și tehnologia?</h2>
+                <p><strong>Cultura informațională</strong> (information literacy) reprezintă abilitatea fundamentală de a naviga prin oceanul de date digital, de a filtra zgomotul de fond și de a extrage esențialul cu o privire critică.</p>
+                <p><strong>Tehnologia</strong> oferă infrastructura de execuție: algoritmi avansați, putere de calcul și medii de simulare în timp real. Împreună, ele reprezintă ecosistemul cognitiv indispensabil creatorului modern.</p>
+            </section>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Cultura Informațională și Tehnologie Digitală">
+            </div>
+        </div>
+
+        <!-- Componenta 2 -->
+        <div class="grid-section reverse">
+            <section>
+                <h2><span>02.</span> Rolul artistului în era digitală</h2>
+                <p>Prin lentila culturii informaționale și a tehnologiei, artistul încetează să mai fie un simplu executant mecanic și devine:</p>
+                <ul>
+                    <li><strong>Un curator de sens:</strong> Selectează și transformă fluxurile uriașe de date în conținut emoționant.</li>
+                    <li><strong>Un mediator tehnologic:</strong> Traduce concepte complexe și abstracte în limbaj vizual universal.</li>
+                    <li><strong>Un inovator adaptabil:</strong> Folosește software-ul și AI-ul ca extensii directe ale propriei imaginații.</li>
+                </ul>
+            </section>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Artist Digital la Lucru">
+            </div>
+        </div>
+
+        <!-- Componenta 3 -->
+        <div class="grid-section">
+            <section>
+                <h2><span>03.</span> Saltul în Animație prin Tehnologie</h2>
+                <p>Animația este o artă bazată pe fizică, mișcare și timing. Cultura informațională și tehnologia te ajută să excelezi prin:</p>
+                <ul>
+                    <li><strong>Stăpânirea Pipeline-ului:</strong> Gestionarea eficientă a fluxului de la modelare 3D, rigging și simulări fizice, până la randare.</li>
+                    <li><strong>Cercetare riguroasă:</strong> Acces la baze de date globale cu referințe corecte de anatomie și dinamică a mișcării.</li>
+                    <li><strong>Expunere internațională:</strong> Capacitatea de a-ți expune portofoliul și de a colabora global prin GitHub, ArtStation sau platforme cloud.</li>
+                </ul>
+            </section>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&w=800&q=80" alt="Animație și Grafică 3D">
+            </div>
+        </div>
+
+        <!-- Instrumente de Studiu Interactive -->
+        <div class="study-tools-wrapper">
+            <div class="study-header">
+                <h2>🧠 Centru de Instrumente pentru Studiu</h2>
+                <p>Testează-ți cunoștințele și consolidează conceptele prin intermediul chestionarului interactiv și al cardurilor de memorie.</p>
+            </div>
+
+            <!-- Quiz Interactiv -->
+            <div class="quiz-box">
+                <div class="question-tracker" id="q-tracker">Întrebarea 1 din 2</div>
+                <div class="question" id="question-text">Care este rolul principal al culturii informaționale pentru un artist digital?</div>
+                <div class="options" id="options-container">
+                    <!-- Opțiuni dinamice -->
+                </div>
+                <button class="btn-action" onclick="nextQuestion()" id="next-btn">Trimite Răspunsul</button>
+                <div id="quiz-result"></div>
+            </div>
+
+            <!-- Flashcards / Concepte Cheie de Memorat -->
+            <h3 style="color: #a5b4fc; margin-bottom: 1rem; font-family: 'Outfit', sans-serif;">Carduri de Studiu Rapid (Flashcards)</h3>
+            <div class="flashcards-grid">
+                <div class="flashcard">
+                    <h4>Cultura Informațională</h4>
+                    <p>Filtrarea critică a datelor și capacitatea de a selecta informația valoroasă din masele de conținut redundant.</p>
+                </div>
+                <div class="flashcard">
+                    <h4>Pipeline-ul de Animație</h4>
+                    <p>Fluxul tehnologic structurat prin care o idee brută devine o secvență animată finisată profesional.</p>
+                </div>
+                <div class="flashcard">
+                    <h4>Artistul Curator</h4>
+                    <p>Rolul contemporan în care creatorul dă sens și context noilor tehnologii și conținutului digital generat.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Creat ca platformă educațională interactivă pentru integrarea artei, culturii informaționale și tehnologiei pe GitHub Pages.</p>
+    </footer>
+
+    <script>
+        const quizzes = [
+            {
+                tracker: "Întrebarea 1 din 2",
+                question: "Cum influențează tehnologia rolul artistului în animație?",
+                options: [
+                    "Îi limitează complet libertatea de creație și originalitatea.",
+                    "Îi extinde limbajul de expresie, automatizează sarcinile repetitive și optimizează fluxul de lucru.",
+                    "Elimină definitiv necesitatea înțelegerii principiilor de bază ale desenului."
+                ],
+                correct: 1,
+                feedbackCorrect: "Corect! Tehnologia oferă unelte avansate care amplifică viziunea artistică și eficiența.",
+                feedbackIncorrect: "Incorect. Tehnologia nu înlocuiește artistul, ci îi extinde capacitățile de exprimare."
+            },
+            {
+                tracker: "Întrebarea 2 din 2",
+                question: "De ce este crucială cultura informațională pentru un artist modern?",
+                options: [
+                    "Pentru a filtra sursele de referință corecte și a evita dezinformarea sau clișeele vizuale.",
+                    "Doar pentru a descărca fișiere de pe internet fără verificare.",
+                    "Nu are nicio relevanță practică în domeniul artelor vizuale."
+                ],
+                correct: 0,
+                feedbackCorrect: "Corect! Cultura informațională oferă filtrul critic necesar pentru a asigura documentare de calitate.",
+                feedbackIncorrect: "Incorect. Cultura informațională oferă discernământ în evaluarea surselor și referințelor."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+
+        function loadQuizItem() {
+            const q = quizzes[currentQuizIndex];
+            document.getElementById("q-tracker").innerText = q.tracker;
+            document.getElementById("question-text").innerText = q.question;
+            
+            const container = document.getElementById("options-container");
+            container.innerHTML = "";
+            
+            q.options.forEach((opt, index) => {
+                container.innerHTML += `
+                    <label class="option-label">
+                        <input type="radio" name="quiz-opt" value="${index}"> ${opt}
+                    </label>
+                `;
+            });
+
+            document.getElementById("quiz-result").innerText = "";
+            document.getElementById("quiz-result").style.backgroundColor = "transparent";
+            document.getElementById("next-btn").innerText = currentQuizIndex === quizzes.length - 1 ? "Verifică Răspunsul Final" : "Următoarea Întrebare";
+        }
+
+        function nextQuestion() {
+            const selected = document.querySelector('input[name="quiz-opt"]:checked');
+            const resultDiv = document.getElementById("quiz-result");
+            
+            if (!selected) {
+                resultDiv.style.backgroundColor = "rgba(239, 68, 68, 0.15)";
+                resultDiv.style.color = "#f87171";
+                resultDiv.innerText = "Te rog să selectezi o opțiune înainte de a continua!";
+                return;
+            }
+
+            const answer = parseInt(selected.value);
+            const q = quizzes[currentQuizIndex];
+
+            if (answer === q.correct) {
+                resultDiv.style.backgroundColor = "rgba(34, 197, 94, 0.15)";
+                resultDiv.style.color = "#4ade80";
+                resultDiv.innerText = q.feedbackCorrect;
+            } else {
+                resultDiv.style.backgroundColor = "rgba(239, 68, 68, 0.15)";
+                resultDiv.style.color = "#f87171";
+                resultDiv.innerText = q.feedbackIncorrect;
+            }
+
+            setTimeout(() => {
+                currentQuizIndex++;
+                if (currentQuizIndex < quizzes.length) {
+                    loadQuizItem();
+                } else {
+                    currentQuizIndex = 0;
+                    loadQuizItem();
+                }
+            }, 3000);
+        }
+
+        window.onload = loadQuizItem;
+    </script>
+
+</body>
+</html>
